@@ -1,11 +1,297 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <title>Moja strona 🎉</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Polska Mapa Fotowoltaiki – wkrótce</title>
+    <meta
+      name="description"
+      content="Polska Mapa Fotowoltaiki — lista oczekujących. Zapisz się, aby otrzymać bazę danych o klientach przed innymi."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --overlay: rgba(12, 70, 160, 0.68);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.84);
+        --card: rgba(255, 255, 255, 0.10);
+        --border: rgba(255, 255, 255, 0.22);
+        --error: rgba(255, 255, 255, 0.90);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+        background-image: url("manny-becerra-VgF9kogcU1U-unsplash%20%281%29.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .overlay {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+      }
+
+      .overlay::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 50%;
+        background: var(--overlay);
+      }
+
+      .left {
+        position: relative;
+        padding: clamp(24px, 5vw, 56px);
+        display: flex;
+        align-items: center;
+      }
+
+      .content {
+        max-width: 680px;
+        width: 100%;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        font-size: clamp(30px, 3.2vw, 46px);
+      }
+
+      .lead {
+        margin: 0 0 16px;
+        font-weight: 300;
+        color: var(--muted);
+        font-size: clamp(15px, 1.35vw, 18px);
+        line-height: 1.5;
+      }
+
+      .promise {
+        margin: 0 0 22px;
+        font-weight: 300;
+        color: var(--muted);
+        font-size: clamp(15px, 1.35vw, 18px);
+        line-height: 1.5;
+        padding: 14px 14px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+
+      form {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.20);
+        color: var(--text);
+        outline: none;
+        font-size: 16px;
+      }
+
+      input[type="email"]::placeholder { color: rgba(255, 255, 255, 0.75); }
+
+      button {
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.16);
+        color: var(--text);
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      button:hover { background: rgba(255, 255, 255, 0.22); }
+      button:disabled { cursor: not-allowed; opacity: 0.65; }
+
+      .consent {
+        display: grid;
+        gap: 10px;
+        padding: 12px 12px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.18);
+        border: 1px solid var(--border);
+      }
+
+      .checkbox {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 13px;
+        line-height: 1.35;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .checkbox input { margin-top: 2px; }
+
+      .rodo {
+        font-size: 12px;
+        line-height: 1.35;
+        color: rgba(255, 255, 255, 0.84);
+      }
+
+      .rodo a { color: rgba(255, 255, 255, 0.92); }
+
+      .status {
+        min-height: 18px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .status.error { color: var(--error); }
+
+      @media (max-width: 900px) {
+        .overlay { grid-template-columns: 1fr; }
+        .overlay::before { width: 100%; }
+      }
+    </style>
   </head>
   <body>
-    <h1>Cześć! 👋</h1>
-    <p>Działa! To GitHub Pages.</p>
+    <main class="overlay">
+      <section class="left">
+        <div class="content">
+          <h1>Polska Mapa Fotowoltaiki</h1>
+
+          <p class="lead">
+            Dane adresowe dachów z fotowoltaiką w całej Polsce – skontaktuj się z klientem zanim ruszą dofinansowania na magazyny energii i zanim zrobi to konkurencja
+          </p>
+
+          <div class="promise">
+            Zapisz się, aby otrzymać bazę danych o klientach przed innymi.
+          </div>
+
+          <form
+            id="waitlistForm"
+            action=""
+            method="POST"
+            novalidate
+          >
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="row">
+              <input
+                type="email"
+                name="email"
+                placeholder="Twój e-mail"
+                required
+                autocomplete="email"
+                inputmode="email"
+              />
+              <button type="submit" id="submitBtn">Powiadom mnie</button>
+            </div>
+
+            <div class="consent">
+              <label class="checkbox">
+                <input type="checkbox" name="rodo_consent" required />
+                <span>
+                  Wyrażam zgodę na przetwarzanie mojego adresu e-mail przez Jakub Dryjas (JDG) w celu dopisania do listy oczekujących i wysłania informacji o starcie usługi / udostępnieniu bazy.
+                </span>
+              </label>
+
+              <div class="rodo">
+                Administrator danych: Jakub Dryjas (JDG), Siennicka 27A/446, 04-394 Warszawa, kontakt: <a href="mailto:kontakt@mapafotowoltaiki.pl">kontakt@mapafotowoltaiki.pl</a>.<br />
+                Cel: lista oczekujących i kontakt w sprawie startu usługi. Podstawa: zgoda (art. 6 ust. 1 lit. a RODO).<br />
+                Okres: do wycofania zgody lub maks. 24 miesiące od zapisu (co nastąpi wcześniej).<br />
+                Masz prawo dostępu, sprostowania, usunięcia, ograniczenia, przenoszenia danych oraz cofnięcia zgody w dowolnym momencie (kontakt e-mail powyżej). Podanie e-maila jest dobrowolne, ale konieczne do powiadomienia.
+              </div>
+            </div>
+
+            <div class="status" id="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <section aria-hidden="true"></section>
+    </main>
+
+    <script>
+      // Wklej tutaj endpoint z Formspree w formacie: https://formspree.io/f/<id>
+      const FORMSPREE_ENDPOINT = "";
+
+      const form = document.getElementById("waitlistForm");
+      const statusEl = document.getElementById("status");
+      const submitBtn = document.getElementById("submitBtn");
+
+      function setStatus(message, isError) {
+        statusEl.textContent = message;
+        statusEl.classList.toggle("error", Boolean(isError));
+      }
+
+      function isValidEndpoint(value) {
+        return typeof value === "string" && value.startsWith("https://formspree.io/f/") && value.length > "https://formspree.io/f/".length;
+      }
+
+      if (!isValidEndpoint(FORMSPREE_ENDPOINT)) {
+        submitBtn.disabled = true;
+        setStatus("Konfiguracja wymagana: wklej endpoint Formspree w kodzie strony (FORMSPREE_ENDPOINT).", true);
+      } else {
+        form.action = FORMSPREE_ENDPOINT;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        if (!isValidEndpoint(FORMSPREE_ENDPOINT)) {
+          e.preventDefault();
+          setStatus("Formularz nie jest jeszcze skonfigurowany.", true);
+          return;
+        }
+
+        e.preventDefault();
+        submitBtn.disabled = true;
+        setStatus("Wysyłanie…");
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+        try {
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" },
+            signal: controller.signal
+          });
+
+          if (response.ok) {
+            form.reset();
+            setStatus("Dziękuję! Jeśli wszystko poszło OK, jesteś na liście oczekujących.");
+            return;
+          }
+
+          setStatus("Nie udało się wysłać formularza. Spróbuj ponownie za chwilę.", true);
+        } catch (err) {
+          setStatus("Błąd wysyłki (timeout lub problem z siecią). Spróbuj ponownie.", true);
+        } finally {
+          clearTimeout(timeoutId);
+          submitBtn.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
