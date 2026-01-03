@@ -18,10 +18,10 @@
 
     <style>
       :root {
-        --overlay: rgba(12, 70, 160, 0.68);
+        --overlay: rgba(12, 70, 160, 0.86);
         --text: #ffffff;
         --muted: rgba(255, 255, 255, 0.84);
-        --card: rgba(255, 255, 255, 0.10);
+        --card: rgba(255, 255, 255, 0.14);
         --border: rgba(255, 255, 255, 0.22);
         --error: rgba(255, 255, 255, 0.90);
       }
@@ -52,6 +52,8 @@
         inset: 0 auto 0 0;
         width: 50%;
         background: var(--overlay);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
       }
 
       .left {
@@ -71,6 +73,7 @@
         font-weight: 500;
         letter-spacing: 0.2px;
         font-size: clamp(30px, 3.2vw, 46px);
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
       }
 
       .lead {
@@ -79,6 +82,7 @@
         color: var(--muted);
         font-size: clamp(15px, 1.35vw, 18px);
         line-height: 1.5;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.30);
       }
 
       .promise {
@@ -91,6 +95,7 @@
         background: var(--card);
         border: 1px solid var(--border);
         border-radius: 10px;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.24);
       }
 
       form {
@@ -160,6 +165,14 @@
 
       .rodo a { color: rgba(255, 255, 255, 0.92); }
 
+      .rodo-details summary {
+        cursor: pointer;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .rodo-details[open] summary { margin-bottom: 8px; }
+
       .status {
         min-height: 18px;
         font-size: 13px;
@@ -216,12 +229,15 @@
                 </span>
               </label>
 
-              <div class="rodo">
-                Administrator danych: Jakub Dryjas (JDG), Siennicka 27A/446, 04-394 Warszawa, kontakt: <a href="mailto:kontakt@mapafotowoltaiki.pl">kontakt@mapafotowoltaiki.pl</a>.<br />
-                Cel: lista oczekujących i kontakt w sprawie startu usługi. Podstawa: zgoda (art. 6 ust. 1 lit. a RODO).<br />
-                Okres: do wycofania zgody lub maks. 24 miesiące od zapisu (co nastąpi wcześniej).<br />
-                Masz prawo dostępu, sprostowania, usunięcia, ograniczenia, przenoszenia danych oraz cofnięcia zgody w dowolnym momencie (kontakt e-mail powyżej). Podanie e-maila jest dobrowolne, ale konieczne do powiadomienia.
-              </div>
+              <details class="rodo-details">
+                <summary>Informacja RODO (rozwiń)</summary>
+                <div class="rodo">
+                  Administrator danych: Jakub Dryjas (JDG), Siennicka 27A/446, 04-394 Warszawa, kontakt: <a href="mailto:kontakt@mapafotowoltaiki.pl">kontakt@mapafotowoltaiki.pl</a>.<br />
+                  Cel: lista oczekujących i kontakt w sprawie startu usługi. Podstawa: zgoda (art. 6 ust. 1 lit. a RODO).<br />
+                  Okres: do wycofania zgody lub maks. 24 miesiące od zapisu (co nastąpi wcześniej).<br />
+                  Masz prawo dostępu, sprostowania, usunięcia, ograniczenia, przenoszenia danych oraz cofnięcia zgody w dowolnym momencie (kontakt e-mail powyżej). Podanie e-maila jest dobrowolne, ale konieczne do powiadomienia.
+                </div>
+              </details>
             </div>
 
             <div class="status" id="status" aria-live="polite"></div>
